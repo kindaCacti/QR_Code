@@ -1,1 +1,4 @@
-.exe
+*.exe
+*.bmp
+*.txt
+*.gch
