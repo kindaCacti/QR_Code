@@ -1,0 +1,1 @@
+This is an app to create and read QR codes
