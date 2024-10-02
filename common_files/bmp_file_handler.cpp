@@ -46,8 +46,8 @@ public:
     static std::string convert_data_to_bmp(QRCode& code){
         std::string out = "";
 
-        for(int y = code.get_height()-1; y>=0; y--){
-            for(int x = 0; x < code.get_width(); x++){
+        for(int y = 0; y<code.get_height(); y++){
+            for(int x = code.get_width() - 1; x >= 0; x--){
                 bool is_black = code.get_bit_at(x, y);
                 if(is_black){
                     out.push_back((char)0);
