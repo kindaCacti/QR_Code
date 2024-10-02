@@ -47,7 +47,7 @@ public:
         std::string out = "";
 
         for(int y = code.get_height()-1; y>=0; y--){
-            for(int x = code.get_width()-1; x>=0; x--){
+            for(int x = 0; x < code.get_width(); x++){
                 bool is_black = code.get_bit_at(x, y);
                 if(is_black){
                     out.push_back((char)0);
@@ -59,6 +59,10 @@ public:
                     out.push_back((char)255);
                 }
             }
+            int tmp = (4-((code.get_width()%4) * 3))%4;
+            for(int i = 0; i<tmp; i++){
+                out.push_back(0);
+            }
         }
 
         return out;
@@ -67,7 +71,6 @@ public:
     static void output_bmp_file(QRCode& code, std::string file_path){
         std::string data = get_bmp_header(code);
         data += convert_data_to_bmp(code);
-        std::cout<<data<<std::endl;
         Bmp_file_handler::write_to_file(data, file_path);
     }
 };
